@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Owin;
 
@@ -14,12 +15,12 @@ namespace Helpful.Logging.Owin
 
         public override async Task Invoke(IOwinContext context)
         {
+            string content = new StreamReader(context.Request.Body).ReadToEnd();
+
+            byte[] requestData = Encoding.UTF8.GetBytes(content);
+            context.Request.Body = new MemoryStream(requestData);
+
             var request = context.Request;
-            string content;
-            using (var sr = new StreamReader(context.Request.Body))
-            {
-                content = sr.ReadToEnd();
-            }
 
             var requestLog = new
             {
