@@ -1,5 +1,5 @@
 # Helpful.Logging.Owin
-This is Owin middleware for the Helpful.Logging logging context which allows you to automatically populate the logging context from http headers of received calls.
+This is Owin middleware for the [Helpful.Logging](https://github.com/RokitSalad/Helpful.Logging) logging context which allows you to automatically populate the logging context from http headers of received calls.
 
 ##Usage
 ```c#
