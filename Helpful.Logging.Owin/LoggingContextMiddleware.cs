@@ -16,7 +16,6 @@ namespace Helpful.Logging.Owin
 
         public override async Task Invoke(IOwinContext context)
         {
-            LoggingContext.Set(LoggingContext.RequestHeadersKey, _requestHeaders.Keys);
             foreach (var key in _requestHeaders.Keys)
             {
                 string headerValue = context.Request.Headers[key] ?? _requestHeaders[key]();
